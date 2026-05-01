@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Марсианская база</title>
+    <link rel="stylesheet" href="mars-style.css">
+</head>
+<body>
+
+<div class="main">
+
+    <!-- Навигация -->
+    <div class="nav">
+        <!-- onclick - при клике запускает функцию -->
+        <a href="#" onclick="showPage('home')">Главная</a>
+        <a href="#" onclick="showPage('easy')">Лёгкий</a>
+        <a href="#" onclick="showPage('medium')">Средний</a>
+        <a href="#" onclick="showPage('hard')">Сложный</a>
+    </div>
+
+    <!-- Главная -->
+    <div class="page" id="home">
+        <h1>МАРСИАНСКАЯ БАЗА</h1>
+        <p>Выбери уровень:</p>
+
+        <div class="status">
+            <p>O2: 98% — НОРМА</p>
+            <p>ЭНЕРГИЯ: 74% — ОК</p>
+        </div>
+
+        <div class="levels">
+            <a href="#" class="card" onclick="showPage('easy')">
+                <span>🌱</span>
+                <h3>ЛЁГКИЙ</h3>
+                <p>Проверка систем</p>
+            </a>
+            <a href="#" class="card" onclick="showPage('medium')">
+                <span>⚠️</span>
+                <h3>СРЕДНИЙ</h3>
+                <p>Починить проводку</p>
+            </a>
+            <a href="#" class="card" onclick="showPage('hard')">
+                <span>🔥</span>
+                <h3>СЛОЖНЫЙ</h3>
+                <p>Код доступа</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Лёгкий -->
+    <div class="page" id="easy">
+        <h2>ЛЁГКИЙ: ПРОВЕРКА СИСТЕМ</h2>
+        <p>Выбери действие:</p>
+
+        <a href="#" class="btn" onclick="easyWin()">Запустить насосы</a>
+        <a href="#" class="btn" onclick="easyFail()">Отключить щиты</a>
+        <a href="#" class="btn" onclick="easyFail()">Открыть шлюз</a>
+        <a href="#" class="btn" onclick="showPage('home')">Назад</a>
+    </div>
+
+    <!-- Средний -->
+    <div class="page" id="medium">
+        <h2>СРЕДНИЙ: ПОЧИНИТЬ ПРОВОДКУ</h2>
+        <p>Соединяй по порядку: Красный → Зелёный → Жёлтый → Синий</p>
+        <p id="med-progress">Осталось: 4</p>
+
+        <div class="wires" id="med-wires">
+            <div class="wire red-wire" id="wire-red">
+                <span>🔴 Красный</span>
+                <a href="#" class="btn small" onclick="connectWire('red')">Выбрать</a>
+            </div>
+            <div class="wire green-wire" id="wire-green">
+                <span>🟢 Зелёный</span>
+                <a href="#" class="btn small" onclick="connectWire('green')">Выбрать</a>
+            </div>
+            <div class="wire yellow-wire" id="wire-yellow">
+                <span>🟡 Жёлтый</span>
+                <a href="#" class="btn small" onclick="connectWire('yellow')">Выбрать</a>
+            </div>
+            <div class="wire blue-wire" id="wire-blue">
+                <span>🔵 Синий</span>
+                <a href="#" class="btn small" onclick="connectWire('blue')">Выбрать</a>
+            </div>
+        </div>
+
+        <p>⬇ Правая сторона ⬇</p>
+
+        <div class="wires">
+            <div class="wire-end green-end"><span>🟢 Зелёный</span></div>
+            <div class="wire-end red-end"><span>🔴 Красный</span></div>
+            <div class="wire-end yellow-end"><span>🟡 Жёлтый</span></div>
+            <div class="wire-end blue-end"><span>🔵 Синий</span></div>
+        </div>
+
+        <p id="med-message"></p>
+        <a href="#" class="btn" onclick="resetMedium()">Заново</a>
+        <a href="#" class="btn" onclick="showPage('home')">Назад</a>
+    </div>
+
+    <!-- Сложный -->
+    <div class="page" id="hard">
+        <h2>СЛОЖНЫЙ: КОД ДОСТУПА</h2>
+        <p>Введи код: 7 - 3 - 9</p>
+        <p id="hard-code">_ _ _</p>
+        <p id="hard-message"></p>
+
+        <div class="keypad" id="keypad">
+            <a href="#" class="key" onclick="pressKey(7)">7</a>
+            <a href="#" class="key" onclick="pressKey(2)">2</a>
+            <a href="#" class="key" onclick="pressKey(5)">5</a>
+            <a href="#" class="key" onclick="pressKey(1)">1</a>
+            <a href="#" class="key" onclick="pressKey(8)">8</a>
+            <a href="#" class="key" onclick="pressKey(4)">4</a>
+            <a href="#" class="key" onclick="pressKey(9)">9</a>
+            <a href="#" class="key" onclick="pressKey(0)">0</a>
+            <a href="#" class="key" onclick="pressKey(6)">6</a>
+            <a href="#" class="key" onclick="pressKey(3)">3</a>
+        </div>
+
+        <a href="#" class="btn" onclick="resetHard()">Заново</a>
+        <a href="#" class="btn" onclick="showPage('home')">Назад</a>
+    </div>
+
+</div>
+
+<script src="mars-script.js"></script>
+</body>
+</html>
